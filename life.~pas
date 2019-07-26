@@ -1,0 +1,179 @@
+unit life;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, ComCtrls, Buttons;
+
+type
+  TForm1 = class(TForm)
+    PaintBox1: TPaintBox;
+    Button1: TButton;
+    Button2: TButton;
+    Label1: TLabel;
+    Timer1: TTimer;
+    Start: TButton;
+    ScrollBar1: TScrollBar;
+    Label2: TLabel;
+    Label3: TLabel;
+    ScrollBar2: TScrollBar;
+    Label4: TLabel;
+    Label5: TLabel;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure StartClick(Sender: TObject);
+    procedure ScrollBar1Change(Sender: TObject);
+    procedure ScrollBar2Change(Sender: TObject);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  A:array[0..50,0..50] of integer;
+  flip: integer;
+  JJ,HH,TT:Integer;
+
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.Button1Click(Sender: TObject);
+var i,j,x,y: integer;
+  begin
+    for j:=0 to 50 do
+    begin
+      for i:=0 to 50 do
+       begin
+         If Random(1000)>500 then A[i,j]:=1 else A[i,j]:=0;
+       end;
+    end;
+
+
+end;
+
+
+
+procedure DrawField(n:integer);
+var  i,j: integer;
+begin
+   for j:=0 to 50 do
+    begin
+      for i:=0 to 50 do
+        begin
+        If A[i,j]=1 then
+         begin
+          Form1.PaintBox1.Canvas.Pen.Width:=1;
+          Form1.PaintBox1.Canvas.Pen.Color:=clBlack;
+          Form1.PaintBox1.Canvas.Brush.Color:=clGreen;
+          Form1.PaintBox1.Canvas.Rectangle(2+i*12,2+j*12,12+i*12,12+j*12);
+           end else
+                begin
+                  Form1.PaintBox1.Canvas.Pen.Width:=0;
+                  Form1.PaintBox1.Canvas.Brush.Color:=clwhite;
+                  Form1.PaintBox1.Canvas.Rectangle(2+i*12,2+j*12,12+i*12,12+j*12);
+                end;
+          end;
+        end;
+end;
+
+
+
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+DrawField(1);
+end;
+
+procedure Monte(u:integer);
+var i,x,y,sn,dss,M,SS: integer;
+J,H,T:Double;
+rat: Double;
+next:array[0..50] of integer;
+w:array[0..20,0..20] of Double;
+prev:array[0..50] of integer;
+begin
+J:=JJ/10;
+H:=HH;
+T:=1;
+i := -8;
+while i <= 8 do
+begin
+w[i+8,0]:=Exp(-(i*J+2*H)/T);
+w[i+8,2]:=Exp(-(i*J-2*H)/T);
+i := i+4;
+end;
+for i:=1 to 50 do
+  begin
+  next[i]:=i+1;
+  prev[i]:=i-1;
+  end;
+next[50-1]:=0;
+prev[1]:=50-1;
+for x:=1 to 50 do
+  begin
+    for y:=1 to 50 do
+      begin
+      sn:=A[x,next[y]]+A[x,prev[y]]+A[next[x],y]+A[prev[x],y];
+      dss:=2*A[x,y]*sn;
+      rat:=w[dss+8,A[x,y]+1];
+      if Random(1000)/1000 < rat then
+      begin
+      A[x,y]:=-A[x,y];
+      M:=M + 2*A[x,y];
+      SS:= SS-dss;
+      flip:=flip+1;
+      end;
+      end;
+    end;
+DrawField(1);
+end;
+
+procedure TForm1.Timer1Timer(Sender: TObject);
+begin
+Label1.Caption:=IntToStr(flip);
+Monte(1);
+end;
+
+
+procedure TForm1.StartClick(Sender: TObject);
+begin
+Timer1.Enabled:=True;
+end;
+
+
+
+
+
+procedure TForm1.ScrollBar1Change(Sender: TObject);
+begin
+JJ:=ScrollBar1.Position;
+Label3.Caption:=FloatToStr(JJ/10);
+end;
+
+procedure TForm1.ScrollBar2Change(Sender: TObject);
+begin
+HH:=ScrollBar2.Position;
+Label5.Caption:=FloatToStr(HH/10);
+end;
+
+end.
+
+
+var  i,j: integer;
+  begin
+    for j:=1 to 50 do
+      begin
+        for i:=1 to 50 do
+        begin
+        A[i,j]
+        end;
+      end;
+  end;
+
+
