@@ -1,7 +1,7 @@
 # Hopfield-network
 Hopfield network algorithm
 Written in Delphi
-![image](https://user-images.githubusercontent.com/15639055/235308659-2574ce40-7375-4133-980c-b5113233e306.png)
+![image](https://user-images.githubusercontent.com/15639055/235308659-2574ce40-7375-4133-980c-b5113233e306.png) \n
 You can try app by loadin Project1.exe file for check how it works. There is a math model of Hopfield Network with a simple UI which can:
 1) Resize size of the network with the sidebar on the top
 2) Make Random array and corrupt current state (for checking how Neural Network works
