@@ -8,8 +8,6 @@ You can try app by loadin Project1.exe file for check how it works. There is a m
 3) Inverse button for inversing current image
 4) clear what on screen
 5) capture image and show it (just for storing images)
-
-and more important buttons:
 6) Learn current image - neural network taking image as a input and remember this image and clearing the board
 7) clear NET - for init state of neural network (forget all images)
 8) Recognition - after neural network have been taught, you can input similar image on the board and neural network will try to recreate it
