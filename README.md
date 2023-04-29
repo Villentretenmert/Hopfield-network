@@ -5,14 +5,15 @@ Written in Delphi
 
 
 
-You can try app by loadin Project1.exe file for check how it works. There is a math model of Hopfield Network with a simple UI which can:
-1) Resize size of the network with the sidebar on the top
-2) Make Random array and corrupt current state (for checking how Neural Network works
-3) Inverse button for inversing current image
-4) clear what on screen
-5) capture image and show it (just for storing images)
-6) Learn current image - neural network taking image as a input and remember this image and clearing the board
-7) clear NET - for init state of neural network (forget all images)
-8) Recognition - after neural network have been taught, you can input similar image on the board and neural network will try to recreate it
-9) animation - type how many steps you want network to iterate through states. (works if checkbox Asynchronous enabled )
-10) ...
+To try the app, load the Project1.exe file and see how it works. It includes a math model of the Hopfield Network with a simple UI that can:
+
+1) Resize the size of the network using the sidebar at the top
+2) Create a random array and corrupt the current state (for checking how the neural network works)
+3) Inverse the current image
+4) Clear the screen
+5) Capture an image and display it (just for storing images)
+6) Learn the current image: the neural network takes the image as input and remembers it, clearing the board
+7) Clear the NET: reset the state of the neural network (forget all images)
+8) Recognition: after the neural network has been taught, you can input a similar image on the board, and the neural network will try to recreate it
+9) Animation: type how many steps you want the network to iterate through states (works if the Asynchronous checkbox is enabled)
+...
